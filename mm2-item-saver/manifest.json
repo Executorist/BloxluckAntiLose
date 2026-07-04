@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "MM2 Item Saver v3",
+  "version": "3.0",
+  "description": "BloxLuck MM2 smart item protection - blocks loss events, allows wins",
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
+    "*://bloxluck.com/*",
+    "*://*.bloxluck.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "MM2 Saver v3"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://bloxluck.com/*", "*://*.bloxluck.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["*://bloxluck.com/*", "*://*.bloxluck.com/*"]
+    }
+  ]
+}
